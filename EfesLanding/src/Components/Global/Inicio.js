@@ -16,6 +16,7 @@ import logo from './images/logo.svg';
 import botella from './images/lata.png';
 
 //Axios
+console.log(config.backURL);
 const axiosInstance = axios.create({
     baseURL: config.backURL
 });
