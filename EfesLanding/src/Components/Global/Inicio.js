@@ -129,6 +129,7 @@ class Inicio extends Component {
                     console.log(error);
                     this.setState({display:'none'});
                     swal('Ha ocurrido un error', 'Favor intente nuevamente', 'warning');
+                    console.log(error);
                 })
             }
         }
