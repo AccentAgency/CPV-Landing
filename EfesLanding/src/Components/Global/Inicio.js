@@ -8,13 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import swal from 'sweetalert';
 
-import config from '../../config/config';
+import config from './config/config';
 import axios from "axios";
 
 //Imagenes
 import logo from './images/logo.svg';
 import botella from './images/lata.png';
-
+import regalos from './images/regalos.png';
 //Axios
 
 const axiosInstance = axios.create({
@@ -147,6 +147,7 @@ class Inicio extends Component {
     }  
 
     render(){
+        console.log(config.backURL);
         const {errors} = this.state;
         return(
             <div className="">
@@ -201,16 +202,13 @@ class Inicio extends Component {
                 </section>
 
                 <section className="formulario">
+                    
                     <div className="container">
-                        <div className="col-md-6 col-xs-12">
-                            <h1>PREMIOS</h1>
+                    <div className="row">
+                        <div className="col-md-6 col-xs-12 sorpresas-form">
+                            <h1>PREMIOS <span>EFES</span> <br></br> SORPRESAS</h1>
                             <div className="premios col-12">
-                            </div>
-
-                            <div className="premios col-12">
-                            </div>
-
-                            <div className="premios col-12">
+                                <img className="img-fluid regalos" src={regalos} alt="regalos"></img>
                             </div>
 
                         </div>
@@ -262,8 +260,18 @@ class Inicio extends Component {
                             </form>
                         </div>
                     </div>
-
+                    </div>
                 </section>
+
+                <footer className="footer-mobile">
+                    <div className="container">
+                        <h3>Distribuidora CPV</h3>
+                        <p>Centro De Producción de Venezuela. 2021</p>
+                        <div className="col-xs-12 col-sm-12 no-padding copyright">&copy; Copyright 2021 Distribuidora CPV. </div>
+                    </div>
+
+                </footer>
+
             </div>
         )
     }

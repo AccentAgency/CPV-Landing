@@ -141,14 +141,23 @@ body{
     margin-top: 8%;
 }
 .formulario h1{
-    text-align: center;
     color: #04295A;
     font-weight: 600;
 }
+.sorpresas-form h1{
+    position: absolute;
+    margin-top: 2%;
+    padding-left: 2%;
+}
+.formulario span{
+    font-family: 'Wakerobin', sans-serif;
+}
+.formulario-form h1{
+    text-align: center;
+
+}
 .premios{
-    height: 150px;
     border-radius: 30px;
-    background-color: #ECECEC;
     margin-bottom: 5%;
 }
 
@@ -173,8 +182,8 @@ body{
 
 .formulario-form{
     text-align: center;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
 }
 
 .error {
@@ -380,4 +389,12 @@ body{
     #banner {
         height: 565px;
     }
+}
+
+footer {
+    background-color: #4d4d4d;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
