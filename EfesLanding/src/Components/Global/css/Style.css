@@ -329,7 +329,7 @@ body{
     }
 
     .navbar-nav{
-        margin-top: -5%;
+        margin-top: -2%;
     }
 
     .navbar{
@@ -338,6 +338,10 @@ body{
 
     .header {
         height: auto;
+    }
+
+    footer {
+        margin-top: 12%;
     }
 
 }
