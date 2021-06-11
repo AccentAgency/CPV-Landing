@@ -1,0 +1,383 @@
+body{
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+/* MENU */
+
+.header {
+    background: #fff;
+    width: 100%;
+    height: auto;
+    top: 0;
+
+}
+
+.tittle_page{
+    font-size: calc(1.6em + 1vw);
+    font-family: 'Wakerobin', sans-serif;
+    font-weight: bold;
+    color: #00498f;
+}
+
+.padd-top{
+    padding-top: 25%;
+}
+
+.padd-left{
+    padding-left: 12%;
+}
+
+/*BANNER PRINCIPAL */
+#banner {
+    background: radial-gradient(81.88% 107.25% at 78.99% 50%, #29A9D0 0%, #186E99 27.6%, #04295A 79.17%, #04295A 100%);
+    min-height: 100%;
+    position: relative;
+}
+
+.banner-info{
+    position: relative;
+    padding-top: 5%;
+}
+
+.banner-text{
+    position: absolute;
+    top: 15%;
+    left: 10px;
+    text-align: center;
+}
+
+.float-left{
+    float: left;
+}
+
+
+.float-right{
+    float: right;
+}
+
+.white{
+    color:#fff;
+}
+
+.yellow{
+    color: #f0c104;
+}
+
+.text-principal{
+    font-size: calc(6em + 4vw);
+    margin-left: -60px;
+}
+
+.bolder{
+    font-weight: bolder;
+}
+
+.bold{
+    font-weight: 700 !important;
+}
+
+.none-bold{
+    font-weight: 500 !important;
+}
+
+.text-2{
+    text-align: left;
+    margin-top: -30px;
+}
+
+.text-second{
+    margin-top: -20px;
+}
+
+.text-2 h2{
+    font-size: calc(3.4em + 1vw);
+    font-weight: 500;
+}
+
+.text-2 h3{
+    font-size: calc(4em + 1vw);
+    margin-top: -8%;
+    margin-left: -30px;
+    font-weight: 600;
+}
+
+.text-2 h4{
+    font-size: calc(1.9em + 1vw);
+    margin-left: -30px;
+}
+
+.position-txt3 h4{
+    font-size: calc(2.5em + 1vw);
+    width: 130%;
+    float: left;
+    margin-left: -15px;
+    font-weight: bold;
+    color: #f0c104;
+    margin-top: -20px;
+}
+
+.position-txt3 span{
+    color: #fff;
+    font-weight: 500;
+}
+
+.btn_form{
+    font-size:30px;
+    border: none;
+    border-radius: 40px;
+    background-color: #70a83b;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 250px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+
+/*PREMIOS*/
+.formulario{
+    margin-top: 8%;
+}
+.formulario h1{
+    text-align: center;
+    color: #04295A;
+    font-weight: 600;
+}
+.premios{
+    height: 150px;
+    border-radius: 30px;
+    background-color: #ECECEC;
+    margin-bottom: 5%;
+}
+
+
+
+/*FORMULARIO*/
+.form-group input, .form-group select {
+    border-radius: 30px;
+    border: none;
+    background-color: #e6e6e6;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 65px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.formulario-form{
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.error {
+    color: #db2269;
+    font-size: .945em;
+}
+
+/*LOADER*/
+.loader-page {
+    position: fixed;
+    z-index: 25000;
+    background: rgb(0, 0, 0, 0.6);
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease;
+}
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
+
+@media (max-width:989px){
+    .padd-top{
+        padding-top: 5%;
+    }
+    
+    .padd-left{
+        padding-left: 2%;
+    }
+
+    .navbar-nav {
+        align-items: center;
+        justify-content: center;
+        flex-direction: row !important;
+    }
+
+    .navbar .mx-auto{
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width:766px){
+    .text-principal{
+        font-size: calc(2.5em + 4vw);
+        margin-left: 0px;
+    }
+
+    .banner-info {
+        float: left;
+        padding-left: 15px;
+    }
+
+    .banner-text{
+        text-align: left;
+        left: 18px;
+    }
+
+    .text-2{
+        margin-top: 0px;
+    }
+
+    .text-second{
+        margin-top: -10px;
+    }
+
+    .text-2 h2{
+        font-size: calc(1em + 1vw);
+    }
+
+    .text-2 h3{
+        font-size: calc(1.4em + 1vw);
+    }
+
+    .btn_form {
+        font-size: 18px;
+        border: none;
+        border-radius: 40px;
+        background-color: #70a83b;
+        color: #fff;
+        text-align: center;
+        padding: 6px 10px;
+        width: 150px;
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    #banner {
+        min-height: 260px;
+    }
+
+    .banner-text{
+        width: 51%;
+    }
+
+    .position-txt3 h4 {
+        font-size: calc(1.2em + 1vw);
+   
+    }
+
+    .phone-size{
+        margin-bottom: 0px;
+        font-size: calc(1.9em + 4vw);
+    }
+
+    .navbar-nav img{
+        width: 80px;
+    }
+
+    .navbar-nav{
+        margin-top: -5%;
+    }
+
+    .navbar{
+        padding-bottom: 0px !important;
+    }
+
+    .header {
+        height: auto;
+    }
+
+}
+@media (min-width:768px){
+    .col-md-6{
+        float: left;
+    }
+}
+
+@media (min-width:767px) and (max-width:991px){
+    .text-principal {
+        font-size: calc(5em + 4vw);
+    }
+
+    .phone-size{
+        font-size: calc(2.3em + 4vw);
+        margin-bottom: 0px;
+    }
+
+
+    .text-2 h2{
+        font-size: calc(2.3em + 1vw);
+        margin-left: -20px;
+    }
+
+    .text-2 h3{
+        font-size: calc(2.6em + 1vw);
+        margin-left: -20px;
+    }
+
+    .position-txt3 h4 {
+        font-size: calc(1.8em + 1vw)
+    }
+
+    .btn_form {
+        margin-top: 0px;
+    }
+
+    .text-2{
+        margin-top: 0px;
+    }
+
+    .text-principal {
+        margin-left: -170px;
+    }
+}
+
+@media (min-width:1023px) and (max-width:1200px){
+    #banner {
+        height: 565px;
+    }
+}
