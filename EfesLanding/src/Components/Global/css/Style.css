@@ -189,6 +189,7 @@ body{
 .error {
     color: #db2269;
     font-size: .945em;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 /*LOADER*/
