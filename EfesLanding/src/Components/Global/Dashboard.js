@@ -141,7 +141,7 @@ class Dashboard extends Component {
                                             {this.state.participantes ? (
                                                 <tbody>
                                                     {Object.keys(this.state.participantes).map (i =>{
-                                                        if(!this.state.participantes[i].Nombre){
+                                                        if(this.state.participantes[i].Nombre){
                                                             return(
                                                                 <tr key={i}>
                                                                     <td></td>
