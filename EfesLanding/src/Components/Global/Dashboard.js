@@ -51,8 +51,12 @@ class Dashboard extends Component {
         this.setState({...this.state.open, open:true});
         this.setState({...this.state.valor, valor:value});
         axiosInstance.get('/getParticipantes/'+value).then(res =>{
-            if(res.data != null){
-                this.setState({participantes:res.data});
+            if(res.data !== null || res.data !== ''){
+                Object.keys(res.data).forEach(value => {
+                    if(res.data[value].Nombre !== '' || res.data[value].Nombre !== null){
+                        this.setState({participantes:res.data});
+                    }
+                })
             }
         })
     }

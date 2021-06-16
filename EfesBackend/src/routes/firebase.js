@@ -33,13 +33,8 @@ router.get('/validationPerson/:cedula/:codigo', async(req,res) => {
 
 router.get('/getParticipantes/:codigo', async(req,res) => {
     let {codigo} = req.params;
-    const result = await db.database().ref('Participantes'+codigo).once('value', function(snapshoot){
-        if(snapshoot.exists()){
-            res.send(snapshoot.val());
-        }
-        else{
-            res.send(null);
-        }
+    const result = await db.database().ref("Participantes"+codigo).once('value', function(snapshoot){
+        res.send(snapshoot.val());
     })
 })
 
