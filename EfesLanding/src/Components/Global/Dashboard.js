@@ -47,6 +47,7 @@ class Dashboard extends Component {
     }
 
     handleParticipantes(value){
+        this.setState({participantes:null});
         this.setState({...this.state.open, open:true});
         this.setState({...this.state.valor, valor:value});
         axiosInstance.get('/getParticipantes/'+value).then(res =>{
@@ -163,7 +164,7 @@ class Dashboard extends Component {
                                                 <tbody>
                                                     <tr>
                                                         <td className="p-0 text-center"></td>
-                                                        <td>No hay participantess.</td>
+                                                        <td>No hay participantes.</td>
                                                     </tr>
                                                 </tbody>
                                             )}  
