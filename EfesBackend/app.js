@@ -37,3 +37,7 @@ app.get('/test', function(req, res){
 	res.send('HELLOOOOOOO');
 	console.log('Se recibio una petición get');
 });
+
+app.get('*', (req, res)=>{
+	res.sendFile(path.resolve(where, the, index.html, is))
+})
