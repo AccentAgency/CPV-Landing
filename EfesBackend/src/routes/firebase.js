@@ -35,6 +35,7 @@ router.get('/getParticipantes/:codigo', async(req,res) => {
     let {codigo} = req.params;
     const result = await db.database().ref("Participantes"+codigo).once('value', function(snapshoot){
         res.send(snapshoot.val());
+        console.log(snapshoot.val());
     })
 })
 
