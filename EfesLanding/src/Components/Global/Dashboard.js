@@ -51,7 +51,6 @@ class Dashboard extends Component {
         this.setState({...this.state.valor, valor:value});
         axiosInstance.get('/getParticipantes/'+value).then(res =>{
             this.setState({participantes:res.data});
-            console.log(res.data);
         })
     }
 
@@ -107,6 +106,7 @@ class Dashboard extends Component {
 
 
     render(){
+        console.log(this.state.participantes);
         return(
             <div id="dashboard" className="">
                 <Confetti
