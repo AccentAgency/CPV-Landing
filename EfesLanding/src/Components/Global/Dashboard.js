@@ -28,7 +28,7 @@ class Dashboard extends Component {
     constructor(props)
     {
         super(props);
-        this.state={open:false, open2:false, participantes:null, valor:'', displayConffeti:false}
+        this.state={open:false, open2:false, participantes:[], valor:'', displayConffeti:false}
 
         this.handleClose = this.handleClose.bind(this);
         this.handleParticipantes = this.handleParticipantes.bind(this);
@@ -47,17 +47,10 @@ class Dashboard extends Component {
     }
 
     handleParticipantes(value){
-        this.setState({participantes:null});
         this.setState({...this.state.open, open:true});
         this.setState({...this.state.valor, valor:value});
         axiosInstance.get('/getParticipantes/'+value).then(res =>{
-            if(res.data !== null || res.data !== ''){
-                Object.keys(res.data).forEach(value => {
-                    if(res.data[value].Nombre !== '' || res.data[value].Nombre !== null){
-                        this.setState({participantes:res.data});
-                    }
-                })
-            }
+            this.setState({participantes:res.data});
         })
     }
 
@@ -145,10 +138,11 @@ class Dashboard extends Component {
                                                     <th>Ubicación</th>
                                                 </tr>
                                             </thead>
-                                            {this.state.participantes != null ? (
+                                            {this.state.participantes ? (
                                                 <tbody>
-                                                    {Object.keys(this.state.participantes).map (i =>{
-                                                        if(!this.state.participantes[i].Nombre){} 
+                                                    {Object.keys(this.state.participantes).map (i =>{ 
+                                                        var cont=0;
+                                                        cont++;
                                                         return(
                                                             <tr key={i}>
                                                                 <td></td>
@@ -168,7 +162,7 @@ class Dashboard extends Component {
                                                 <tbody>
                                                     <tr>
                                                         <td className="p-0 text-center"></td>
-                                                        <td>No hay participantes.</td>
+                                                        <td>No hay participantess.</td>
                                                     </tr>
                                                 </tbody>
                                             )}  
