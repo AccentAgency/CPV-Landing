@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 import './css/Style.css';
 
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import 'font-awesome/css/font-awesome.min.css';
 import swal from 'sweetalert';
@@ -15,6 +17,8 @@ import axios from "axios";
 import logo from './images/logo.svg';
 import botella from './images/lata.png';
 import regalos from './images/regalos.png';
+
+
 //Axios
 
 const axiosInstance = axios.create({
@@ -41,13 +45,14 @@ class Inicio extends Component {
     constructor(props)
     {
         super(props);
-        this.state={display:'none', name:'', cedula:'', ubicacion:'', telefono:'', email:'',
+        this.state={display:'none', name:'', cedula:'', ubicacion:'', telefono:'', email:'', codigo:'',
             errors: {
                 name:'',
                 cedula:'',
                 ubicacion:'',
                 email:'',
-                telefono:''
+                telefono:'',
+                codigo:''
             }
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -102,6 +107,13 @@ class Inicio extends Component {
                     : 'Ingrese un número de telefóno válido.';
             break;
 
+            case 'codigo':
+                errors.codigo =
+                value.length > 3 
+                ? ''
+                : 'Favor ingresar una código válido.';
+            break;
+
             default:
             break;
         }
@@ -109,29 +121,55 @@ class Inicio extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-        if(!this.state.name || !this.state.email || !this.state.telefono || !this.state.cedula || !this.state.ubicacion){
+        if(!this.state.name || !this.state.email || !this.state.telefono || !this.state.cedula || !this.state.ubicacion || !this.state.codigo){
             swal('Formulario Incompleto', 'Favor rellene los datos indicados para enviar su solicitud', 'warning');
         }
         else{
             if(validateForm(this.state.errors)) {
                 this.setState({display:'flex'});
-                axiosInstance.post('/sendParticipacion', {
-                    'name' : this.state.name,
-                    'email': this.state.email,
-                    'phone': this.state.telefono,
-                    'cedula': this.state.cedula, 
-                    'ubicacion': this.state.ubicacion
-                }).then(res => {
-                    this.setState({display:'none'});
-                    swal('¡Gracias por participar con EFES!', 'Pronto anunciaremos los ganadores', 'success');
-                    this.resetForm();
+                if(this.state.codigo === "2233" || this.state.codigo === "3355" || this.state.codigo === "4477" || this.state.codigo === "5599" ||
+                   this.state.codigo === "6600" || this.state.codigo === "7711" || this.state.codigo === "8822" || this.state.codigo === "9944" ||
+                   this.state.codigo === "0066" || this.state.codigo === "1188"){
 
-                }).catch((error) => {
-                    console.log(error);
+                    axiosInstance.get('/validationPerson/'+ this.state.cedula + '/' + this.state.codigo).then(res => {
+                        if(res.data === null || res.data === ""){
+                            axiosInstance.post('/sendParticipacion', {
+                                'name' : this.state.name,
+                                'email': this.state.email,
+                                'phone': this.state.telefono,
+                                'cedula': this.state.cedula, 
+                                'ubicacion': this.state.ubicacion,
+                                'codigo': this.state.codigo
+                            }).then(res => {
+                                this.setState({display:'none'});
+                                swal('¡Gracias por participar con EFES!', 'Pronto anunciaremos los ganadores', 'success');
+                                this.resetForm();
+            
+                            }).catch((error) => {
+                                console.log(error);
+                                this.setState({display:'none'});
+                                swal('Ha ocurrido un error', 'Favor intente nuevamente', 'warning');
+                                console.log(error);
+                            })
+                        }
+                        else{
+                            this.setState({display:'none'});
+                            swal('Ya este usuario se encuentra participando', 'Favor intente nuevamente', 'warning');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        this.setState({display:'none'});
+                        swal('Ha ocurrido un error', 'Favor intente nuevamente', 'warning');
+                        console.log(error);
+                    })
+
+                }
+                else{
                     this.setState({display:'none'});
-                    swal('Ha ocurrido un error', 'Favor intente nuevamente', 'warning');
-                    console.log(error);
-                })
+                    swal('Favor ingresar un código de participación correcto.', 'Verifique correctamente cada dígito.', 'warning');
+                }
+
             }
         }
     }
@@ -142,7 +180,8 @@ class Inicio extends Component {
             cedula:'', 
             ubicacion:'', 
             telefono:'', 
-            email:''
+            email:'',
+            codigo:''
         })
     }  
 
@@ -190,7 +229,7 @@ class Inicio extends Component {
 
                                     
                                     <div className="btn">
-                                        <button className="btn_form">PARTICIPAR</button>
+                                        <button className="btn_form"><a href="#participar">PARTICIPAR</a></button>
                                     </div>
                                 </div>
 
@@ -213,7 +252,7 @@ class Inicio extends Component {
 
                         </div>
 
-                        <div className="col-md-6 col-xs-12 formulario-form">
+                        <div id="participar" className="col-md-6 col-xs-12 formulario-form">
                             <h1>¿QUIERES GANAR? <br></br> PARTICIPA</h1>
 
                             <form onSubmit={this.handleSubmit}>
@@ -232,7 +271,7 @@ class Inicio extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <input name="ubicacion" maxLength="35" type="text" className="formControl" placeholder="Ubicación corta" value={this.state.ubicacion}
+                                    <input name="ubicacion" maxLength="8" type="text" className="formControl" placeholder="Ubicación corta" value={this.state.ubicacion}
                                     onChange={this.handleChange}></input>
                                     {errors.ubicacion.length > 0 && 
                                     <span className='error'>{errors.ubicacion}</span>}
@@ -251,6 +290,13 @@ class Inicio extends Component {
                                     onChange={this.handleChange}></input>
                                     {errors.email.length > 0 && 
                                     <span className='error'>{errors.email}</span>}
+                                </div>
+
+                                <div className="form-group">
+                                    <input name="codigo" maxLength="4" type="tel" className="formControl" placeholder="Código de Participación" value={this.state.codigo}
+                                    onChange={this.handleChange}></input>
+                                    {errors.codigo.length > 0 && 
+                                    <span className='error'>{errors.codigo}</span>}
                                 </div>
 
 

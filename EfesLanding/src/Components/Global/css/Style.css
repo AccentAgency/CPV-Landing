@@ -135,6 +135,14 @@ body{
     font-weight: 600;
 }
 
+.btn_form a{
+    color: #fff;
+}
+
+.btn_form a:hover{
+    color: #fff;
+}
+
 
 /*PREMIOS*/
 .formulario{
@@ -161,6 +169,11 @@ body{
     margin-bottom: 5%;
 }
 
+.display-table-cell {
+    display: table-cell;
+    float: none;
+    height: 100%;
+}
 
 
 /*FORMULARIO*/
@@ -190,6 +203,10 @@ body{
     color: #db2269;
     font-size: .945em;
     font-family: 'Poppins', sans-serif !important;
+}
+
+footer{
+    margin-top: 8%;
 }
 
 /*LOADER*/
@@ -393,6 +410,16 @@ body{
 @media (min-width:1023px) and (max-width:1200px){
     #banner {
         height: 565px;
+    }
+}
+
+@media (max-width: 767px){
+    .hidden-xs {
+        display: none!important;
+    }
+
+    #navigation{
+        width: 15%;
     }
 }
 
