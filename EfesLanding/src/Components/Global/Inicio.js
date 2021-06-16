@@ -257,7 +257,7 @@ class Inicio extends Component {
 
                             <form onSubmit={this.handleSubmit}>
                                 <div className="form-group">
-                                    <input name="name" maxLength="20" type="text" className="formControl" placeholder="Nombre y Apellido" value={this.state.name}
+                                    <input name="name" maxLength="40" type="text" className="formControl" placeholder="Nombre y Apellido" value={this.state.name}
                                     onChange={this.handleChange}></input>
                                     {errors.name.length > 0 && 
                                     <span className='error'>{errors.name}</span>}
