@@ -28,13 +28,14 @@ class Dashboard extends Component {
     constructor(props)
     {
         super(props);
-        this.state={open:false, open2:false, participantes:[], valor:'', displayConffeti:false}
+        this.state={open:false, open2:false, participantes:[], valor:'', displayConffeti:false, menu:'hidden-xs'}
 
         this.handleClose = this.handleClose.bind(this);
         this.handleParticipantes = this.handleParticipantes.bind(this);
         this.handlelogout = this.handlelogout.bind(this);
         this.handleGanadores = this.handleGanadores.bind(this);
         this.handleList = this.handleList.bind(this);
+        this.handleClickMenu = this.handleClickMenu.bind(this);
     }
 
     handleClose(){
@@ -52,6 +53,14 @@ class Dashboard extends Component {
         axiosInstance.get('/getParticipantes/'+value).then(res =>{
             this.setState({participantes:res.data});
         })
+    }
+
+    handleClickMenu(){
+        if(this.state.menu === 'hidden-xs') {
+            this.setState({menu: ''})
+          } else{
+            this.setState({menu: 'hidden-xs'})
+          }
     }
 
     handleGanadores(){
@@ -262,7 +271,7 @@ class Dashboard extends Component {
 
                 <div className="container-fluid display-table">
                     <div className="row display-table-row">
-                        <div className="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                        <div className={"col-md-2 col-sm-1 display-table-cell v-align box "+ this.state.menu} id="navigation">
                             <div className="col-md-2 col-sm-1 main-sidebar">
                                 <div className="logo">
                                     <Link to="/"><img src={logo} alt="merkery_logo" className="hidden-xs hidden-sm"/>
@@ -286,7 +295,8 @@ class Dashboard extends Component {
                                     <div className="col-md-7">
                                         <nav className="navbar-default pull-left">
                                             <div className="navbar-header">
-                                                <button type="button" className="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                                <button onClick={this.handleClickMenu} type="button" className="navbar-toggle collapsed" data-toggle="offcanvas" 
+                                                data-target="#side-menu" aria-expanded="false">
                                                     <span className="sr-only">Toggle navigation</span>
                                                     <span className="icon-bar"></span>
                                                     <span className="icon-bar"></span>
