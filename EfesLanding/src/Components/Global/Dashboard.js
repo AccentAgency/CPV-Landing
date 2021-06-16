@@ -51,6 +51,7 @@ class Dashboard extends Component {
         this.setState({...this.state.valor, valor:value});
         axiosInstance.get('/getParticipantes/'+value).then(res =>{
             this.setState({participantes:res.data});
+            console.log(res.data);
         })
     }
 
