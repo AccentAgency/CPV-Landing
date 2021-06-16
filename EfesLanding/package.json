@@ -1,7 +1,7 @@
 {
   "name": "efeslanding",
   "version": "0.1.0",
-  "private": true,
+  "homepage":"distribuidoracpv.com/",
   "dependencies": {
     "@firebase/app": "^0.6.26",
     "@firebase/auth": "^0.16.6",
