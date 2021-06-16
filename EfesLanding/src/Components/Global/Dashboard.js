@@ -140,19 +140,30 @@ class Dashboard extends Component {
                                             </thead>
                                             {this.state.participantes ? (
                                                 <tbody>
-                                                    {Object.keys(this.state.participantes).map (i =>{ 
-                                                        return(
-                                                            <tr key={i}>
-                                                                <td></td>
-                                                                <td>{this.state.participantes[i].Nombre}</td>
-                                                                <td>{this.state.participantes[i].Cedula}</td>
-                                                                <td>{this.state.participantes[i].Email}</td>
-                                                                <td>{this.state.participantes[i].Telefono}</td>
-                                                                <td>{this.state.participantes[i].Fecha}</td>
-                                                                <td>{this.state.participantes[i].Ubicacion}</td>
-                                                            </tr>
+                                                    {Object.keys(this.state.participantes).map (i =>{
+                                                        if(!this.state.participantes[i].Nombre){
+                                                            return(
+                                                                <tr key={i}>
+                                                                    <td></td>
+                                                                    <td>{this.state.participantes[i].Nombre}</td>
+                                                                    <td>{this.state.participantes[i].Cedula}</td>
+                                                                    <td>{this.state.participantes[i].Email}</td>
+                                                                    <td>{this.state.participantes[i].Telefono}</td>
+                                                                    <td>{this.state.participantes[i].Fecha}</td>
+                                                                    <td>{this.state.participantes[i].Ubicacion}</td>
+                                                                </tr>
+    
+                                                            )
+                                                        }
+                                                        else{
+                                                            return(
+                                                                <tr>
+                                                                    <td className="p-0 text-center"></td>
+                                                                    <td>No hay participantess.</td>
+                                                                </tr>
+                                                            )
+                                                        } 
 
-                                                        )
 
                                                     })}
                                                 </tbody>
