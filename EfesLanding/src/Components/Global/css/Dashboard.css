@@ -570,6 +570,7 @@ header {
 }
 .modal-content{
     border: 0;
+    overflow-y: scroll;
 }
 
 .modal-header button{

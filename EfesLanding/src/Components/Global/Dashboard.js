@@ -36,6 +36,7 @@ class Dashboard extends Component {
         this.handleGanadores = this.handleGanadores.bind(this);
         this.handleList = this.handleList.bind(this);
         this.handleClickMenu = this.handleClickMenu.bind(this);
+        this.handleCache = this.handleCache.bind(this);
     }
 
     handleClose(){
@@ -112,6 +113,19 @@ class Dashboard extends Component {
         this.authListener();
     }
 
+    handleCache(){
+        if('caches' in window){
+            caches.keys().then((names) => {
+                    // Delete all the cache files
+                    names.forEach(name => {
+                        caches.delete(name);
+                    })
+                });
+        
+                // Makes sure the page reloads. Changes are only visible after you refresh.
+                window.location.reload(true);
+            }
+    }
 
 
     render(){
@@ -150,8 +164,6 @@ class Dashboard extends Component {
                                             {this.state.participantes ? (
                                                 <tbody>
                                                     {Object.keys(this.state.participantes).map (i =>{ 
-                                                        var cont=0;
-                                                        cont++;
                                                         return(
                                                             <tr key={i}>
                                                                 <td></td>
@@ -290,6 +302,7 @@ class Dashboard extends Component {
                         </div>
 
                         <div className="col-md-10 col-sm-11 display-table-cell v-align">
+                            <button onClick={this.handleCache}>CACHE</button>
                             <div className="row">
                                 <header>
                                     <div className="col-md-7">
