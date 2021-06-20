@@ -264,14 +264,14 @@ class Inicio extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <input name="cedula" maxLength="35" type="tel" className="formControl" placeholder="Cédula" value={this.state.cedula}
+                                    <input name="cedula" maxLength="8" type="tel" className="formControl" placeholder="Cédula" value={this.state.cedula}
                                     onChange={this.handleChange}></input>
                                     {errors.cedula.length > 0 && 
                                     <span className='error'>{errors.cedula}</span>}
                                 </div>
 
                                 <div className="form-group">
-                                    <input name="ubicacion" maxLength="8" type="text" className="formControl" placeholder="Ubicación corta" value={this.state.ubicacion}
+                                    <input name="ubicacion" maxLength="30" type="text" className="formControl" placeholder="Ubicación corta" value={this.state.ubicacion}
                                     onChange={this.handleChange}></input>
                                     {errors.ubicacion.length > 0 && 
                                     <span className='error'>{errors.ubicacion}</span>}
@@ -286,7 +286,7 @@ class Inicio extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <input name="email" maxLength="35" type="email" className="formControl" placeholder="E-mail" value={this.state.email}
+                                    <input name="email" maxLength="45" type="email" className="formControl" placeholder="E-mail" value={this.state.email}
                                     onChange={this.handleChange}></input>
                                     {errors.email.length > 0 && 
                                     <span className='error'>{errors.email}</span>}
