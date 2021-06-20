@@ -571,6 +571,8 @@ header {
 .modal-content{
     border: 0;
     overflow-y: scroll;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .modal-header button{
