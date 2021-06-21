@@ -37,7 +37,6 @@ class Dashboard extends Component {
         this.handleGanadores = this.handleGanadores.bind(this);
         this.handleList = this.handleList.bind(this);
         this.handleClickMenu = this.handleClickMenu.bind(this);
-        this.handleCache = this.handleCache.bind(this);
     }
 
     handleClose(){
@@ -114,22 +113,16 @@ class Dashboard extends Component {
         this.authListener();
     }
 
-    handleCache(){
-        if('caches' in window){
-            caches.keys().then((names) => {
-                    // Delete all the cache files
-                    names.forEach(name => {
-                        caches.delete(name);
-                    })
-                });
-        
-                // Makes sure the page reloads. Changes are only visible after you refresh.
-                window.location.reload(true);
-            }
-    }
-
 
     render(){
+        const clearCacheData = () => {
+            caches.keys().then((names) => {
+              names.forEach((name) => {
+                caches.delete(name);
+              });
+            });
+            alert('Complete Cache Cleared')
+          };
         return(
             <div id="dashboard" className="">
                 <Confetti
@@ -303,14 +296,7 @@ class Dashboard extends Component {
                         </div>
 
                         <div className="col-md-10 col-sm-11 display-table-cell v-align">
-                            <ClearCache>
-                            {({ isLatestVersion, emptyCacheStorage }) => (
-                            <button onClick={e => {
-                                e.preventDefault();
-                                emptyCacheStorage();
-                              }}>CACHE</button>
-                            )}
-                            </ClearCache>
+                            <button  onClick={() => clearCacheData()}>CACHE</button>
                             <div className="row">
                                 <header>
                                     <div className="col-md-7">
