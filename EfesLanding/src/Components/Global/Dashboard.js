@@ -37,6 +37,7 @@ class Dashboard extends Component {
         this.handleGanadores = this.handleGanadores.bind(this);
         this.handleList = this.handleList.bind(this);
         this.handleClickMenu = this.handleClickMenu.bind(this);
+        this.clearCacheData = this.clearCacheData.bind(this);
     }
 
     handleClose(){
@@ -113,16 +114,11 @@ class Dashboard extends Component {
         this.authListener();
     }
 
+    clearCacheData(){
+        window.location.reload(true)
+    }
 
     render(){
-        const clearCacheData = () => {
-            caches.keys().then((names) => {
-              names.forEach((name) => {
-                caches.delete(name);
-              });
-            });
-            alert('Complete Cache Cleared')
-          };
         return(
             <div id="dashboard" className="">
                 <Confetti
@@ -296,7 +292,6 @@ class Dashboard extends Component {
                         </div>
 
                         <div className="col-md-10 col-sm-11 display-table-cell v-align">
-                            <button  onClick={() => clearCacheData()}>CACHE</button>
                             <div className="row">
                                 <header>
                                     <div className="col-md-7">
@@ -317,6 +312,14 @@ class Dashboard extends Component {
                                             <input type="text" placeholder="Search" id="search"/>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-5">
+                                        <div class="header-rightside">
+                                            <ul class="list-inline header-top pull-right">
+                                                <li class="hidden-xs add-project" onClick={this.clearCacheData}>Actualizar Datos</li>
+                                            </ul>
+                                        </div>
+                                    </div>    
                                 </header>
                             </div>
                                                 

@@ -206,6 +206,25 @@ li,ul{
     height: 100%;
 }
 
+#tabla_pagos{
+    overflow: scroll;
+    
+}
+.modal-content{
+    max-height: 450px;
+    overflow: hidden;
+}
+
+
+.modal-content{
+    overflow: scroll;
+}
+
+
+.table>tbody {
+    overflow: scroll;
+}
+
 .display-table-cell {
     display: table-cell;
     float: none;
@@ -240,6 +259,7 @@ li,ul{
     font-weight: 600;
     padding: 10px 27px 10px 45px;
     position: relative;
+    cursor: pointer;
 }
 
 .header-rightside .nav > li > a:focus,
@@ -566,12 +586,10 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow-y: scroll;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
 }
 .modal-content{
     border: 0;
+
 }
 
 .modal-header button{
