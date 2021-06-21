@@ -19,12 +19,13 @@ import Confetti from 'react-confetti'
 import {fire} from './config/firebase';
 import swal from 'sweetalert';
 
+import ClearCache from 'react-clear-cache';
+
 const axiosInstance = axios.create({
     baseURL: config.backURL
 });
 
 class Dashboard extends Component {
-
     constructor(props)
     {
         super(props);
@@ -302,13 +303,21 @@ class Dashboard extends Component {
                         </div>
 
                         <div className="col-md-10 col-sm-11 display-table-cell v-align">
-                            <button onClick={this.handleCache}>CACHE</button>
+                            <ClearCache>
+                            {({ isLatestVersion, emptyCacheStorage }) => (
+                            <button onClick={e => {
+                                e.preventDefault();
+                                emptyCacheStorage();
+                              }}>CACHE</button>
+                            )}
+                            </ClearCache>
                             <div className="row">
                                 <header>
                                     <div className="col-md-7">
                                         <nav className="navbar-default pull-left">
                                             <div className="navbar-header">
-                                                <button onClick={this.handleClickMenu} type="button" className="navbar-toggle collapsed" data-toggle="offcanvas" 
+                                                <button type="button" className="navbar-toggle collapsed"
+                                                 data-toggle="offcanvas" 
                                                 data-target="#side-menu" aria-expanded="false">
                                                     <span className="sr-only">Toggle navigation</span>
                                                     <span className="icon-bar"></span>
